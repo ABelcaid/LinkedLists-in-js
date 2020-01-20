@@ -9,15 +9,19 @@ class LinkedList {
     this.head = null;
     this.size = 0;
   }
-
 //  1 add to header
-insertToHead(data){
+insertToHead(){
+   let data = document.getElementById('data').value;
+   let res = document.getElementById('res');
   this.head = new Node(data, this.head);
+  res.innerHTML = this.head.data;
   this.size++;
 }
 // 2 add to last
 
-insertLast(data){
+insertLast(){
+  let data = document.getElementById('data').value;
+  let res = document.getElementById('res');
   let node = new Node(data);
   let tmp;
   // if empty
@@ -31,10 +35,13 @@ insertLast(data){
     tmp.next = node;
   }
   this.size++;
+  res.innerHTML = node.data + "<br>";
 }
 
 //  3 insert at index
-insertAt(data, index){
+insertAt(){
+  let data = document.getElementById('data').value;
+  let index = document.getElementById('index').value;
   // if index out of range
 if (index > 0 && index > this.size) {
   return;
@@ -61,7 +68,9 @@ prev.next = node;
 }
 
 // 4 get at index
-getAt(index){
+getAt(){
+  let index = document.getElementById('index').value;
+  let res = document.getElementById('res');
   if (index > 0 && index > this.size) {
     return;
   }
@@ -74,19 +83,25 @@ current = this.head;
     current = current.next;
   }
   console.log(current.data);
+  res.innerHTML = current.data;
+
+
 }
 
 //  5 print LinkedList
-printList(data){
+printList(){
+  res.innerHTML = "";
   let tmp = this.head;
   while (tmp) {
-    console.log(tmp.data);
+    res.innerHTML += tmp.data + "<br>";
+    // console.log(tmp.data);
     tmp = tmp.next;
   }
 }
 
  // 6 remove at index
-removeAt(index){
+removeAt(){
+  let index = document.getElementById('index').value;
   if (index > 0 && index > this.size) {
     return;
   }
@@ -106,8 +121,11 @@ current = this.head;
  // 7 clear list
 
 clearList(){
+  let res = document.getElementById('res');
 this.head = null;
 this.size = 0;
+res.innerHTML = "list is empty";
+
 }
 
 
@@ -115,11 +133,41 @@ this.size = 0;
 }
 
 let ll = new LinkedList();
-// ll.insertToHead(123);
-ll.insertToHead(1243);
-ll.insertLast(999);
-ll.insertAt(11,0);
-// ll.clearList();
-ll.removeAt(1);
- console.log(ll);
-ll.printList();
+// // ll.insertToHead(123);
+// ll.insertToHead(1243);
+// ll.insertToHead(131);
+// ll.insertLast(999);
+// ll.insertAt(11,0);
+// // ll.clearList();
+// ll.removeAt(1);
+//  console.log(ll);
+// ll.printList();
+
+
+function insertToHead(){
+  ll.insertToHead();
+}
+
+function insertLast(){
+  ll.insertLast();
+}
+
+function insertAt(){
+  ll.insertAt();
+}
+
+function getAt(){
+  ll.getAt();
+}
+
+function removeAt(){
+  ll.removeAt();
+}
+
+function clearList(){
+  ll.clearList();
+}
+
+function printList(){
+  ll.printList();
+}
